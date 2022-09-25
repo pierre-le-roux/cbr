@@ -25,7 +25,8 @@ class CBR:
         
     def print_all_data(self):
         for collection in self.collections:
-            print(collection.head())
+            print(collection.shape)
+            # print(collection.head())
 
     def get_mongodb(self):
         client = MongoClient(f"mongodb+srv://{os.getenv('MONGOUSR')}:{os.getenv('MONGOPWD')}@cbr-cluster.cbvbvby.mongodb.net/?retryWrites=true&w=majority")
@@ -37,3 +38,7 @@ class CBR:
 
     def write_data(self, collection, dict):
         self.db[collection].insert_one(dict)
+        
+    def add_data(self):
+        for column in collection.columns.drop("_id"):
+            print(column)
