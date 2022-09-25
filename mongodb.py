@@ -1,5 +1,10 @@
 from pymongo import MongoClient
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 import pandas as pd
+
+load_dotenv(Path(os.getcwd()) / 'secrets.env')
 
 class CBR:
     
@@ -23,7 +28,7 @@ class CBR:
             print(collection.head())
 
     def get_mongodb(self):
-        client = MongoClient("mongodb+srv://Roudrin:NStVHLCOw8qD54Qo@cbr-cluster.cbvbvby.mongodb.net/?retryWrites=true&w=majority")
+        client = MongoClient(f"mongodb+srv://{os.getenv('MONGOUSR')}:{os.getenv('MONGOPWD')}@cbr-cluster.cbvbvby.mongodb.net/?retryWrites=true&w=majority")
         self.db = client[self.database]
 
     def get_collection(self, collection):
