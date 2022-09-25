@@ -3,6 +3,7 @@ Coffee Barista Recipies (BCR)
 Tables:
 machine
 grinder
+purchase
 coffee
 roastery
 recipy
@@ -22,12 +23,17 @@ roastery:
     id  (auto-increment)
     name (str)
     country
+
+purchase:
+    id
+    coffee_id
+    roasted date
+    purchhased date
     
 coffee:
     id (auto-increment)
     name (str)
     roast level (light, dark)
-    roasted date (date)
     origins (columbia, costa-rica, etc) [multiple - indicate blend]
     processing method (wet/washed, dry/natural, honey & pulped natural)
     species (Arabica, etc)
@@ -36,11 +42,13 @@ coffee:
     taste notes (tangerine, dries fruit, cocoa)
     roastery_id (foreign key)
 
-recipy:
+recipe:
     id (auto-increment)
     machine_id
     grinder_id
-    coffee_id
+    purchase_id
+    timestamp
+    grind
     dose (float - grams) [10-24]
     yield (float - grams)
     ratio (calculated) [1:2]
