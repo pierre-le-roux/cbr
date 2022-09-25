@@ -1,20 +1,26 @@
 from pymongo import MongoClient
 import pandas as pd
 
-class cbr:
+class CBR:
     
     def __init__(self, database):
         self.database = database
-        self.get_mongodb(database)
+        self.get_mongodb()
         self.get_data()
+        self.collections =  [self.machine, self.grinder, self.roastery, 
+                             self.coffee, self.purchase, self.recipe]
         
     def get_data(self):
-        self.machine = self.get_collection(self.db, 'machine')
-        self.grinder = self.get_collection(self.db, 'grinder')
-        self.roastery = self.get_collection(self.db, 'roastery')
-        self.coffee = self.get_collection(self.db, 'coffee')
-        self.purchase = self.get_collection(self.db, 'purchase')
-        self.recipe = self.get_collection(self.db, 'recipe')
+        self.machine = self.get_collection('machine')
+        self.grinder = self.get_collection('grinder')
+        self.roastery = self.get_collection('roastery')
+        self.coffee = self.get_collection('coffee')
+        self.purchase = self.get_collection('purchase')
+        self.recipe = self.get_collection('recipe')
+        
+    def print_all_data(self):
+        for collection in self.collections:
+            print(collection.head())
 
     def get_mongodb(self):
         client = MongoClient("mongodb+srv://Roudrin:NStVHLCOw8qD54Qo@cbr-cluster.cbvbvby.mongodb.net/?retryWrites=true&w=majority")
