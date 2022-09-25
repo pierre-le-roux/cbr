@@ -1,0 +1,51 @@
+Coffee Barista Recipies (BCR)
+
+Tables:
+machine
+grinder
+coffee
+roastery
+recipy
+
+
+machine:
+    id (auto-increment)
+    name (str)
+    brand (str)
+
+grinder:
+    id (auto-increment)
+    name (str)
+    brand (str)
+
+roastery:
+    id  (auto-increment)
+    name (str)
+    country
+    
+coffee:
+    id (auto-increment)
+    name (str)
+    roast level (light, dark)
+    roasted date (date)
+    origins (columbia, costa-rica, etc) [multiple - indicate blend]
+    processing method (wet/washed, dry/natural, honey & pulped natural)
+    species (Arabica, etc)
+    variety (caturra, catuaí, bourbon, typica, etc)
+    elevation (m.a.s.l.)
+    taste notes (tangerine, dries fruit, cocoa)
+    roastery_id (foreign key)
+
+recipy:
+    id (auto-increment)
+    machine_id
+    grinder_id
+    coffee_id
+    dose (float - grams) [10-24]
+    yield (float - grams)
+    ratio (calculated) [1:2]
+    brew time (push of the button until desired yield)
+    temperature
+    water
+    milk
+    rating (float) [1-5]
